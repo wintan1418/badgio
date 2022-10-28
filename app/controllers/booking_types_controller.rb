@@ -12,7 +12,7 @@ class BookingTypesController < ApplicationController
 
   # GET /booking_types/new
   def new
-    @booking_type = BookingType.new
+    @booking_type = current_user.booking_types.new
   end
 
   # GET /booking_types/1/edit
@@ -21,7 +21,7 @@ class BookingTypesController < ApplicationController
 
   # POST /booking_types or /booking_types.json
   def create
-    @booking_type = BookingType.new(booking_type_params)
+    @booking_type = current_user.booking_types.new(booking_type_params)
 
     respond_to do |format|
       if @booking_type.save
